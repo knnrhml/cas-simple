@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
+    <title>Simple CAS</title>
+    <element1>scenario 1 &nbsp &nbsp &nbsp &nbsp &nbsp</element1>
+    <element2>scenario 2 &nbsp &nbsp &nbsp &nbsp &nbsp</element2>
+    <element3>scenario 3 &nbsp &nbsp &nbsp &nbsp &nbsp</element3>
+    <element4>toggle images &nbsp &nbsp &nbsp &nbsp &nbsp</element4>
+    <element5>back to main menu &nbsp &nbsp &nbsp &nbsp &nbsp</element5>
+
+    <!-- jquery for maximum compatibility -->
+	<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css">
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js" integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+
+    var quiztitle = "Simple CAS";
+
+    /**
+    * Set the information about your questions here. The correct answer string needs to match
+    * the correct choice exactly, as it does string matching. (case sensitive)
+    *
+    */
+	
+	    var quiz = [
+{
+	"scenario": {
+		"1": {
+			"question": ["empty", {
+				"text": "Mark is a 61 yrs old man, employee at a private company. The company offers a service of preventive controls, which in the last three years showed a progressive increase of Mark\u2019s PSA, up to a value 8 ng/mL.  Mark has mild lower urinary tract symptoms (LUTS) with a LUTS score suggesting a possible BPH. What would you suggest to Mark?",
+				"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Gray1120-urinary-tract.png/455px-Gray1120-urinary-tract.png",
+				"answer": {
+					"1": {
+						"text": "refer to an urologist for a visit",
+						"result": "WRONG",
+						"reason": "Urologists are best trained to treat any condition involving the urinary tract and the male reproductive system. Other healthcare professionals may be involved in your care-a urologist may work with an oncologist to treat prostate cancer, or with a gynecologist to treat pelvic pain in women.",
+						"reference": "https://en.wikipedia.org/wiki/Urology",
+						"next": 1
+					},
+					"2": {
+						"text": "refer to an urologist for a transrectal US-guided needle biopsy",
+						"result": "CORRECT",
+						"reason": "Transrectal ultrasound-guided prostate biopsy has become essential in diagnostic investigation of patients with clinical suspicion of prostatic neoplasia due to gland alterations resulting from abnormality on the digital rectal examination or rising of the prostatic specific antigen (PSA).",
+						"reference": "https://en.wikipedia.org/wiki/Prostate_biopsy",
+						"next": 2
+					},
+					"3": {
+						"text": "undergo a CT scan of pelvis",
+						"result": "WRONG",
+						"reason": "Computed tomography (CT) of the abdomen and pelvis is a diagnostic imaging test used to help detect diseases of the small bowel, colon and other internal organs and is often used to determine the cause of unexplained pain. ",
+						"reference": "https://en.wikipedia.org/wiki/CT_scan",
+						"next": 1
+					},
+					"4": {
+						"text": "undergo a cystoscopy",
+						"result": "WRONG",
+						"reason": "Your doctor might order this test if you have urinary problems, such as a constant need to urinate or painful urination, blood in your urine, frequent urinary tract infections, an overactive bladde or pelvic pain. A cystoscopy can reveal several conditions, including bladder tumors, stones, or cancer.",
+						"reference": "https://en.wikipedia.org/wiki/Cystoscopy",
+						"next": 1
+					}
+				}
+			}, {
+				"text": "Mark underwent a transrectal US-guided needle biopsy of a prostatic nodule. The pathological finding is a prostatic cancer with a Gleason score 3+4. A CT scan revealed only some enlarged regional nodes and no extra-glandular diffusion (T2 on TNM staging). Which is the preferred treatment option for Mark?",
+				"image": "https://upload.wikimedia.org/wikipedia/commons/f/f8/CT_of_prostate_cancer.jpg",
+				"answer": {
+					"1": {
+						"text": "radiation therapy",
+						"result": "WRONG",
+						"reason": "Radiation therapy (also called radiotherapy) is a cancer treatment that uses high doses of radiation to kill cancer cells and shrink tumors. At low doses, radiation is used in x-rays to see inside your body, as with x-rays of your teeth or broken bones.",
+						"reference": "https://en.wikipedia.org/wiki/Radiation_therapy",
+						"next": 2
+					},
+					"2": {
+						"text": "hormone therapy with androgen deprivation",
+						"result": "WRONG",
+						"reason": "Androgens stimulate prostate cancer cells to grow. The main androgens in the body are testosterone and dihydrotestosterone (DHT). Most of the androgens are made by the testicles, but the adrenal glands (glands that sit above your kidneys) also make a small amount. Lowering androgen levels or stopping them from getting into prostate cancer cells often makes prostate cancers shrink or grow more slowly for a time.",
+						"reference": "https://en.wikipedia.org/wiki/Androgen_deprivation_therapy",
+						"next": 2
+					},
+					"3": {
+						"text": "surgery",
+						"result": "CORRECT",
+						"reason": "Surgery is a common choice to try to cure prostate cancer if it is not thought to have spread outside the prostate gland. The main type of surgery for prostate cancer is a radical prostatectomy. In this operation, the surgeon removes the entire prostate gland plus some of the tissue around it, including the seminal vesicles. A radical prostatectomy can be done in different ways.",
+						"reference": "https://en.wikipedia.org/wiki/Surgery",
+						"next": 3
+					},
+					"4": {
+						"text": "radiation therapy, followed by surgery",
+						"result": "WRONG",
+						"reason": "with a primary rectal cancer without detectable distant metastasis who after locoregional therapy only, meaning preoperative radio(chemo)therapy plus surgery have at least a 40% risk of not having a CRM negative resection or a recurrence, local or distant, within three years will be treated with the short course 5 x 5 Gy radiation scheme followed by four cycles of combination chemotherapy and TME surgery.",
+						"reference": "https://en.wikipedia.org/wiki/Radiation_therapy",
+						"next": 2
+					}
+				}
+			}, {
+				"text": "The consultant urologist suggested Mark to undergo a radical prostatectomy. What kind of access would you suggest?",
+				"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Diagram_showing_before_and_after_a_radical_prostatectomy_CRUK_473.svg/375px-Diagram_showing_before_and_after_a_radical_prostatectomy_CRUK_473.svg.png",
+				"answer": {
+					"1": {
+						"text": "open surgery",
+						"result": "WRONG",
+						"reason": "Open surgeries are less common than they used to be due to the creation of 'minimally invasive' surgical techniques which involve smaller incisions or even (in some cases) no incision at all. These surgeries use multiple incisions less than an inch in length, with a camera and instruments inserted into the small incisions, and the surgeon is able to watch the procedure on a large monitor.",
+						"reference": "https://en.wikipedia.org/wiki/Surgery",
+						"next": 3
+					},
+					"2": {
+						"text": "trans-uretral approach",
+						"result": "WRONG",
+						"reason": "Transurethral resection of the prostate (commonly known as a TURP, plural TURPs, and rarely as a transurethral prostatic resection, TUPR) is a urological operation. It is used to treat benign prostatic hyperplasia (BPH). As the name indicates, it is performed by visualising the prostate through the urethra and removing tissue by electrocautery or sharp dissection.",
+						"reference": "https://en.wikipedia.org/wiki/Transurethral_resection_of_the_prostate",
+						"next": 3
+					},
+					"3": {
+						"text": "laparoscopic approach",
+						"result": "WRONG",
+						"reason": "Laparoscopic or \u201cminimally invasive\u201d surgery is a specialized technique for performing surgery. In the past, this technique was commonly used for gynecologic surgery and for gall bladder surgery. Over the last 10 years the use of this technique has expanded into intestinal surgery. In traditional \u201copen\u201d surgery the surgeon uses a single incision to enter into the abdomen.",
+						"reference": "https://en.wikipedia.org/wiki/Laparoscopy",
+						"next": 3
+					},
+					"4": {
+						"text": "robotic-assisted approach",
+						"result": "CORRECT",
+						"reason": "In the case of robotically-assisted minimally-invasive surgery, instead of directly moving the instruments, the surgeon uses one of two methods to control the instruments; either a direct telemanipulator or through computer control. A telemanipulator is a remote manipulator that allows the surgeon to perform the normal movements associated with the surgery.",
+						"reference": "https://en.wikipedia.org/wiki/Robot-assisted_surgery",
+						"next": 4
+					}
+				}
+			}, {
+				"text": "In robotic surgery, is the surgeon directly in contact with the patient?",
+				"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Robot_assisted_surgery.jpg/800px-Robot_assisted_surgery.jpg",
+				"answer": {
+					"1": {
+						"text": "direct contact with patient",
+						"result": "WRONG",
+						"reason": "In robotic-assisted surgery doctor doesn't need to be in direct contact with the patient.",
+						"reference": "",
+						"next": 4
+					},
+					"2": {
+						"text": "Robot does everything autonomusly",
+						"result": "WRONG",
+						"reason": "The surgical robot is an operating-room machine completely controlled by a skilled surgeon, who manipulates mechanical arms from a console near the patient's bed.",
+						"reference": "https://en.wikipedia.org/wiki/Robot-assisted_surgery",
+						"next": 4
+					},
+					"3": {
+						"text": "With AI",
+						"result": "OPINION",
+						"reason": "Click again to enter your opinion and press submit.",
+						"reference": "",
+						"next": 4
+					},
+					"4": {
+						"text": "Through teleoperation",
+						"result": "CORRECT",
+						"reason": "In robotic-assisted surgery doctor should operate and monitor the entire process through teleoperation.",
+						"reference": "https://en.wikipedia.org/wiki/Teleoperation",
+						"next": 5
+					}
+				}
+			}, {
+				"text": "Who with these roles is present in the operating room?",
+				"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/WBAMC_first_in_DoD_to_use_robot_for_surgery_160426-A-EK666-511.jpg/800px-WBAMC_first_in_DoD_to_use_robot_for_surgery_160426-A-EK666-511.jpg",
+				"answer": {
+					"1": {
+						"text": "scrub nurse",
+						"result": "WRONG",
+						"reason": "Scrub nursing is a specialty where the nurse is an expert in operative nursing and works closely with surgeons and other surgical staff to ensure a smooth procedure, minimize complications, and continuously assist with maintaining a sterile field.  Surgical nurses are known as scrub nurses and work in the surgical suite to assist with surgery while maintaining a sterile field.",
+						"reference": "https://en.wikipedia.org/wiki/Surgical_nursing",
+						"next": 5
+					},
+					"2": {
+						"text": "bio-engineer",
+						"result": "WRONG",
+						"reason": "Biomedical engineers design instruments, devices, and software used in healthcare; develop new procedures using knowledge from many technical sources; or conduct research needed to solve clinical problems. They frequently work in research and development or quality assurance.",
+						"reference": "https://en.wikipedia.org/wiki/Biological_engineering",
+						"next": 5
+					},
+					"3": {
+						"text": "assistant surgeon",
+						"result": "CORRECT",
+						"reason": "It necessarily mandated the presence of another surgeon who would scrub and stand as assistant by the patient's side. This assistant must be skilled enough in technical work associated with the robotic patient-side cart and also provide pure laparoscopic assistance. This makes the role of the assistant surgeon even more important than in pure laparoscopy.",
+						"reference": "https://en.wikipedia.org/wiki/Surgeon%27s_assistant",
+						"next": 6
+					},
+					"4": {
+						"text": "x-rays technician",
+						"result": "WRONG",
+						"reason": "X-ray technicians (also known as X-ray technologists or radiologic technologists) use cutting-edge imaging methods to visualize the inside of the human body. The pictures they create help physicians to diagnose and treat illnesses or injuries with great accuracy. ",
+						"reference": "https://en.wikipedia.org/wiki/Radiographer",
+						"next": 5
+					}
+				}
+			}, {
+				"text": "What are the expected advantages of robotic-assisted surgery over traditional laparoscopy?",
+				"image": "http://schematthew.com/backup.php?getimage=aHR0cDovL21pZHdlc3Ryb2JvdGljc3VyZ2VyeS5vcmcvd3AtY29udGVudC91cGxvYWRzLzIwMTYvMDYvSGVybmlhLVNjcmVlbnNob3QtMjAxNC0wNC0yMy0xMC4xMi41NS5wbmc=",
+				"answer": {
+					"1": {
+						"text": "robotic-assisted surgeery is cheaper",
+						"result": "WRONG",
+						"reason": "Please see other answers for a better idea.",
+						"reference": "https://en.wikipedia.org/wiki/Robot-assisted_surgery",
+						"next": 6
+					},
+					"2": {
+						"text": "robotic-assisted surgery helps heal faster",
+						"result": "CORRECT",
+						"reason": "Compared with open surgery, robot-assisted surgery was associated with a statistically significant decrease in length of hospital stay, statistically significant lower rates of blood loss, complications, transfusions, and positive surgical margins (for pT2 tumours only), and increased sexual and urinary function (results given in paper).",
+						"reference": "https://en.wikipedia.org/wiki/Da_Vinci_Surgical_System",
+						"next": 6
+					},
+					"3": {
+						"text": "robotic-assisted surgery is risk free",
+						"result": "WRONG",
+						"reason": "Compared with conventional laparoscopic surgery, robot-assisted surgery slightly increased urinary function at 12 months (RR 1.09, 95% CI 1.02 to 1.17; three studies; \u0399\u00b2=0); this difference was of borderline statistical significance. No statistically significant differences were observed between the two groups for the other outcomes assessed.",
+						"reference": "https://en.wikipedia.org/wiki/Da_Vinci_Surgical_System",
+						"next": 6
+					},
+					"4": {
+						"text": "robotic-assisted surgery isn't effective",
+						"result": "OPINION",
+						"reason": "Click again to enter your opinion and press submit. ",
+						"reference": "https://en.wikipedia.org/wiki/Da_Vinci_Surgical_System",
+						"next": 6
+					}
+				}
+			}]
+		},
+		"2": {
+			"question": ["empty", {
+				"text": "David is a 45 yrs old man, employee as a clerk in an assurance company. Unfortunately, he had a car accident 6 months ago that caused a severe spinal injury. David is since then paraplegic and his company provides a health assurance with which he can afford further therapies. What would you suggest to David?",
+				"image": "http://www.neurosurgery.pitt.edu/sites/default/files/header-images/Trauma.jpg?1347038566",
+				"answer": {
+					"1": {
+						"text": "refer to an orthopedic surgeon",
+						"result": "WRONG",
+						"reason": "Orthopaedic surgeons are devoted to the prevention, diagnosis, and treatment of disorders of the bones, joints, ligaments, tendons and muscles",
+						"reference": "https://en.wikipedia.org/wiki/Orthopedic_surgery",
+						"next": "1"
+					},
+					"2": {
+						"text": "refer to neuro surgeon",
+						"result": "WRONG",
+						"reason": "While neurosurgeons perform brain surgery, they also provide the highest level of expertise in spine disorder treatment.",
+						"reference": "https://en.wikipedia.org/wiki/Neurosurgery",
+						"next": "1"
+					},
+					"3": {
+						"text": "undergo CT or RMN scan of the spinal cord ",
+						"result": "WRONG",
+						"reason": "Computed tomography (CT) of the spine is a diagnostic imaging test used to help diagnose\u2014or rule out\u2014spinal column damage in injured patients",
+						"reference": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
+						"next": "1"
+					},
+					"4": {
+						"text": "refer to a physiatrist and physiotherapist to begin a rehabilitation program",
+						"result": "CORRECT",
+						"reason": "Physical medicine and rehabilitation, also known as physiatry, is a branch of medicine that aims to enhance and restore functional ability and quality of life to those with physical impairments or disabilities.",
+						"reference": "https://en.wikipedia.org/wiki/Rehabilitation",
+						"next": "2"
+					}
+				}
+			}, {
+				"text": "David underwent a physiatrist and physiotherapist consult and began a physiotherapy program. Which is the best treatment option for David?",
+				"image": "https://www.wseit.edu.pl/images/upload/Joanna/WSEiT%20Eksoszkielet.jpg",
+				"answer": {
+					"1": {
+						"text": "functional electro myostimulation",
+						"result": "WRONG",
+						"reason": "Electrical muscle stimulation (EMS), also known as neuromuscular electrical stimulation (NMES) or electromyostimulation, is the elicitation of muscle contraction using electric impulses.",
+						"reference": "https://en.wikipedia.org/wiki/Electrical_muscle_stimulation",
+						"next": "2"
+					},
+					"2": {
+						"text": "passive orthoses",
+						"result": "WRONG",
+						"reason": "Insofar as active orthoses and powered exoskeletons are concerned, the technology to build these devices is improving rapidly, but little research has been done on the human side of these human-machine interfaces.",
+						"reference": "https://en.wikipedia.org/wiki/Neuromechanics_of_orthoses",
+						"next": "2"
+					},
+					"3": {
+						"text": "muscle massages",
+						"result": "WRONG",
+						"reason": "A massage after vigorous exercise unquestionably feels good, and it seems to reduce pain and help muscles recover",
+						"reference": "https://en.wikipedia.org/wiki/Massage",
+						"next": "2"
+					},
+					"4": {
+						"text": "lower limb rehabilitation with an exoskeleton",
+						"result": "CORRECT",
+						"reason": "Robotic exoskeletons used during stroke rehabilitation assist with ambulation during the recovery process by providing earlier mobility and restored independence. ",
+						"reference": "https://en.wikipedia.org/wiki/Powered_exoskeleton",
+						"next": "3"
+					}
+				}
+			}, {
+				"text": "The consultants suggested David to undergo a lower limb rehabilitation with an exoskeleton. Who are the professional figures involved?",
+				"image": "https://www.suitx.com/sites/default/files/Phoenix_In_Clinical_Setting.jpg",
+				"answer": {
+					"1": {
+						"text": "nurse",
+						"result": "WRONG",
+						"reason": "Nurses provide and monitor patient care, educate patients and family members about health conditions, provide medications and treatments, give emotional support and advice to patients and their family members, and more.",
+						"reference": "https://en.wikipedia.org/wiki/Nursing",
+						"next": "3"
+					},
+					"2": {
+						"text": "bio-engineer",
+						"result": "WRONG",
+						"reason": "Biomedical engineers design instruments, devices, and software used in healthcare; develop new procedures using knowledge from many technical sources; or conduct research needed to solve clinical problems.",
+						"reference": "https://en.wikipedia.org/wiki/Biomedical_engineering",
+						"next": "3"
+					},
+					"3": {
+						"text": "physiotherapist",
+						"result": "CORRECT",
+						"reason": "Physical therapy (PT), also known as physiotherapy, by using mechanical force and movements (bio-mechanics or kinesiology), manual therapy, exercise therapy, and electrotherapy, remediates impairments and promotes mobility and function. ",
+						"reference": "https://en.wikipedia.org/wiki/Physical_therapy",
+						"next": "4"
+					},
+					"4": {
+						"text": "orthopedic surgeon",
+						"result": "WRONG",
+						"reason": "Orthopaedic surgeons are devoted to the prevention, diagnosis, and treatment of disorders of the bones, joints, ligaments, tendons and muscles.",
+						"reference": "https://en.wikipedia.org/wiki/Orthopedic_surgery",
+						"next": "3"
+					}
+				}
+			}, {
+				"text": "What are the expected advantages of physiotherapy with exoskeleton?",
+				"image": "https://www.researchgate.net/publication/321117502/figure/tbl1/AS:668724973535232@1536447866009/Comparison-of-various-types-of-rehabilitation-robots.png",
+				"answer": {
+					"1": {
+						"text": "exoskeleton is cheaper",
+						"result": "WRONG",
+						"reason": "Please refer to corresponding study material for a better idea.",
+						"reference": "",
+						"next": "4"
+					},
+					"2": {
+						"text": "robotic exoskeletons provide more intensive patient training.",
+						"result": "CORRECT",
+						"reason": "Manual therapy seems to be physically demanding for both the patient and therapist, robotic exoskeletons have been developed to increase the efficiency of rehabilitation therapy. Robotic exoskeletons are capable of providing more intensive patient training, better quantitative feedback, and improved functional outcomes for patients compared to manual therapy. ",
+						"reference": "https://en.wikipedia.org/wiki/Powered_exoskeleton",
+						"next": "4"
+					},
+					"3": {
+						"text": "exoskeleton doesn't help",
+						"result": "OPINION",
+						"reason": "Please describe your motivations",
+						"reference": "https://en.wikipedia.org/wiki/Exoskeleton",
+						"next": "4"
+					},
+					"4": {
+						"text": "physiotherapy is the best method",
+						"result": "WRONG",
+						"reason": "Please refer to corresponding study material for a better idea.",
+						"reference": "https://en.wikipedia.org/wiki/Physical_therapy",
+						"next": "4"
+					}
+				}
+			}]
+		},
+		"3": {
+			"question": ["empty", {
+				"text": "Mary is an 85 yrs old woman, she is retired and she lives far away from her sons who cannot take care of her daily. Last year she was diagnosed an Alzheimer disease and this is affecting her daily activities: she keeps forgetting to take the antihypertensive pill, the insulin for her diabetes and she has missed the last medical check. Her relatives are worried about Mary living alone. What would you suggest to Mary?",
+				"image": "https://cdn.prod-carehubs.net/n1/802899ec472ea3d8/uploads/2015/01/Alzheimers-001-1.jpg",
+				"answer": {
+					"1": {
+						"text": "refer to a geriatrician for further prescription",
+						"result": "WRONG",
+						"reason": "Geriatrics, or geriatric medicine, is a specialty that focuses on health care of elderly people. It aims to promote health by preventing and treating diseases and disabilities in older adults.",
+						"reference": "https://en.wikipedia.org/wiki/Geriatrics",
+						"next": "1"
+					},
+					"2": {
+						"text": "refer to neurologist for further check",
+						"result": "WRONG",
+						"reason": "Neurology is a branch of medicine dealing with disorders of the nervous system. Neurology deals with the diagnosis and treatment of all categories of conditions and disease involving the central and peripheral nervous systems, including their coverings, blood vessels, and all effector tissue, such as muscle.",
+						"reference": "https://en.wikipedia.org/wiki/Neurology",
+						"next": "1"
+					},
+					"3": {
+						"text": "consult the GP for the best option  ",
+						"result": "CORRECT",
+						"reason": "Your local doctor or GP is your first point of contact for non-emergency and preventative medical care during clinic hours (which will vary for each clinic).",
+						"reference": "https://en.wikipedia.org/wiki/General_practitioner",
+						"next": "2"
+					},
+					"4": {
+						"text": "suggest painkillers",
+						"result": "OPINION",
+						"reason": "Please explain your opinion.",
+						"reference": "",
+						"next": "1"
+					}
+				}
+			}, {
+				"text": "Mary and her sons took into consideration consulting the general practitioner who explained them that Mary\u2019s disease will get worse in the next years, and no further pills or exam could improve her clinical status. However, he suggested training Mary\u2019s intellectual residual abilities in order to slower her cognitive impairment. Which is the best option for Mary?",
+				"image": "https://www.icsfoundation.ie/wp-content/uploads/2017/11/robotic-assistance.jpg",
+				"answer": {
+					"1": {
+						"text": "go to a retirement home for the elderly",
+						"result": "WRONG",
+						"reason": "A retirement home is one of many housing options available to older adults, generally 55 years or older. In a retirement home, each person or couple lives in an apartment-style room or suite of rooms generally consisting of a living area, one or more bedrooms, one or more bathrooms and a small kitchen or kitchenette.",
+						"reference": "https://en.wikipedia.org/wiki/Retirement_home",
+						"next": "2"
+					},
+					"2": {
+						"text": "hire a nurse",
+						"result": "WRONG",
+						"reason": "The primary duty of a registered nurse is to care for patients. Registered nurses may provide this care in a variety of settings, such as general hospitals, physicians' offices or patients' homes. ",
+						"reference": "https://en.wikipedia.org/wiki/Nursing",
+						"next": "2"
+					},
+					"3": {
+						"text": "hire a caregiver",
+						"result": "OPINION",
+						"reason": "Please describe your opinion.",
+						"reference": "https://en.wikipedia.org/wiki/Caregiver",
+						"next": "2"
+					},
+					"4": {
+						"text": "go to a retirement home for the elderly in which a robotic assistant interacts with the elderly",
+						"result": "CORRECT",
+						"reason": "Since using devices isn\u2019t the same as asking someone for help, relying on caregiving robots may lead seniors to perceive less lost autonomy than when they depend on human helpers.",
+						"reference": "https://en.wikipedia.org/wiki/Home_automation_for_the_elderly_and_disabled",
+						"next": "3"
+					}
+				}
+			}, {
+				"text": "The consultants suggested Mary to go to a retirement home for the elderly in which a robotic assistant interacts with the elderly and is able to measure vital parameters. Who are the figures involved in Mary\u2019s neuro stimulation?",
+				"image": "https://medicolink.com/wp-content/uploads/2017/08/Neurologist_jobs_in_Denmark_small-1.jpg",
+				"answer": {
+					"1": {
+						"text": "Robotic assistant",
+						"result": "WRONG",
+						"reason": "A personal robot is one whose human interface and design make it useful for individuals",
+						"reference": "https://en.wikipedia.org/wiki/Service_robot",
+						"next": "3"
+					},
+					"2": {
+						"text": "General practitioner",
+						"result": "WRONG",
+						"reason": "General practice (GP) General practitioners (GPs) treat all common medical conditions and refer patients to hospitals and other medical services for urgent and specialist treatment.",
+						"reference": "https://en.wikipedia.org/wiki/General_practitioner",
+						"next": "3"
+					},
+					"3": {
+						"text": "Neurologist",
+						"result": "OPINION",
+						"reason": "A neurologist is a doctor with specialized training in diagnosing and treating diseases of the brain, spinal cord, peripheral nerves, and muscles.",
+						"reference": "https://en.wikipedia.org/wiki/Neurology",
+						"next": "3"
+					},
+					"4": {
+						"text": "Robotic assistant and geriatrist/ general practitioner/ neurologist",
+						"result": "CORRECT",
+						"reason": "All of them must monitor the process for an effective treatment.",
+						"reference": "https://en.wikipedia.org/wiki/Category:Neurologists",
+						"next": "4"
+					}
+				}
+			}, {
+				"text": "What does Mary need in her daily activities that can be done by the robotic assistant?",
+				"image": "http://echord.eu/public/wp-content/uploads/2016/02/CLARK-overview.jpg",
+				"answer": {
+					"1": {
+						"text": "Vital parameter measurement",
+						"result": "WRONG",
+						"reason": "There are four primary vital signs: body temperature, blood pressure, pulse (heart rate), and breathing rate (respiratory rate), often notated as BT, BP, HR, and RR.",
+						"reference": "https://en.wikipedia.org/wiki/Vital_signs",
+						"next": "4"
+					},
+					"2": {
+						"text": "correct pills administration",
+						"result": "WRONG",
+						"reason": "The right medication (drug) The right dose. The right route. The right time.",
+						"reference": "https://en.wikipedia.org/wiki/Drugs.com",
+						"next": "4"
+					},
+					"3": {
+						"text": "Clinical data sending to her doctor",
+						"result": "CORRECT",
+						"reason": "So her doctor will be able to monitor the process without physically being there.",
+						"reference": "https://en.wikipedia.org/wiki/Electronic_health_record",
+						"next": "5"
+					},
+					"4": {
+						"text": "Recreational activities and video/phone calls to keep in touch with her relatives.",
+						"result": "WRONG",
+						"reason": "Assistant can be extremely useful for these kind of activities.",
+						"reference": "https://en.wikipedia.org/wiki/Videotelephony",
+						"next": "4"
+					}
+				}
+			}, {
+				"text": "What are the expected advantages?",
+				"image": "https://deliveryimages.acm.org/10.1145/3130000/3127874/uf1.jpg",
+				"answer": {
+					"1": {
+						"text": "robotic assistant can lower patients' anxiety or discomfort",
+						"result": "CORRECT",
+						"reason": "Improvement of social interactions, mental abilities and possibility to face doctors for a consult with up to date clinical data. It can lower patients\u2019 anxiety or discomfort, loneliness and social impairment.",
+						"reference": "https://en.wikipedia.org/wiki/Preoperational_anxiety",
+						"next": "5"
+					},
+					"2": {
+						"text": "robotic assistant is not helpful",
+						"result": "WRONG",
+						"reason": "Please refer to corresponding study material for a better idea.",
+						"reference": "",
+						"next": "5"
+					},
+					"3": {
+						"text": "robotic assistant is fun to play with",
+						"result": "WRONG",
+						"reason": "Please refer to corresponding study material for a better idea.",
+						"reference": "https://en.wikipedia.org/wiki/Robot",
+						"next": "5"
+					},
+					"4": {
+						"text": "robotic assistant helps heal faster",
+						"result": "OPINION",
+						"reason": "Please explain here.",
+						"reference": "",
+						"next": "5"
+					}
+				}
+			}]
+		}
+	}
+}
+    ];
+
+	    
+    /******* No need to edit below this line *********/
+    var currentscenario = 1, currentquestion = 1, score = 0, submt=true, picked, toggle_image = true;
+
+    jQuery(document).ready(function($){
+		
+
+		$("element1").click(function(){
+			$("element1").css("color", "red");
+			$("element2").css("color", "black");
+			$("element3").css("color", "black");
+			$('h4').remove();
+			currentscenario = 1;
+			currentquestion = 1;
+			score = 0;
+			nextQuestion();
+							
+		});
+		
+		$("element2").click(function(){
+			$("element1").css("color", "black");
+			$("element2").css("color", "red");
+			$("element3").css("color", "black");
+			$('h4').remove();
+			currentscenario = 2;
+			currentquestion = 1;
+			score = 0;
+			nextQuestion();
+		
+		});
+		
+		$("element3").click(function(){
+			$("element1").css("color", "black");
+			$("element2").css("color", "black");
+			$("element3").css("color", "red");
+			$('h4').remove();
+			currentscenario = 3;
+			currentquestion = 1;
+			score = 0;
+			nextQuestion();	
+		});
+
+		$("element4").click(function(){
+			toggle_image = !toggle_image;
+			nextQuestion();	
+		});
+
+		$("element5").click(function(){
+			window.open("https://knnrhml.github.io/cas-menu/","_self");
+		});
+			
+
+        /**
+         * HTML Encoding function for alt tags and attributes to prevent messy
+         * data appearing inside tag attributes.
+         */
+        function htmlEncode(value){
+          return $(document.createElement('div')).text(value).html();
+        }
+
+        /**
+         * This will add the individual choices for each question to the ul#choice-block
+         *
+         * @param {choices} array The choices from each question
+         */
+		function addChoices(choices){
+			if(typeof choices !== "undefined" && $.type(choices) == "object"){
+				$('#choice-block').empty();
+				for(var i=0;i<Object.keys(choices).length; i++){
+				$(document.createElement('li')).addClass('choice choice-box btn').attr('data-index', i).text(choices[i+1]["text"]).appendTo('#choice-block');
+				}
+			}
+		}
+        
+        /**
+         * Resets all of the fields to prepare for next question
+         */
+		function nextQuestion(){
+
+			if(currentquestion == (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length)){
+				$('#submitbutton').html('GET QUIZ RESULTS').removeClass('btn-success').addClass('btn-info').css({'border-color':'#3a87ad', 'color':'#fff'}).on('click', function(){
+					$(this).text('GET QUIZ RESULTS').on('click');
+					endQuiz();
+				})
+				
+			} else {
+			
+			submt = true;
+			$('#explanation').empty();
+			$('#question').text(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["text"]);
+			$('#pager').text('Question ' + Number(currentquestion) + ' of ' + (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length-1));
+			if(quiz[0]["scenario"][currentscenario]["question"][currentquestion].hasOwnProperty('image') && quiz[0]["scenario"][currentscenario]["question"][currentquestion]['image'] != "" && toggle_image){
+				if($('#question-image').length == 0){
+					$(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]["scenario"][currentscenario]["question"][currentquestion]['image']).attr('alt', htmlEncode(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["text"])).insertAfter('#question');
+				} else {
+					$('#question-image').attr('src', quiz[0]["scenario"][currentscenario]["question"][currentquestion]['image']).attr('alt', htmlEncode(quiz[0]["scenario"][currentscenario]["question"][currentquestion]['question']));
+				}
+			} else {
+				$('#question-image').remove();
+			}
+			addChoices(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"]);
+			setupButtons();
+			
+			jQuery(document).ready(function($){
+				$("#question").html(function(){
+					var text= $(this).text().trim().split(" ");
+					var first = text.shift();
+					return (text.length > 0 ? "<span class='number'>"+ first +"</span> " : first) + text.join(" ");
+				});
+				
+				$('p.pager').each(function(){
+					var text = $(this).text().split(' ');
+					if(text.length < 2)
+						return;
+					
+					text[1] = '<span class="qnumber">'+text[1]+'</span>';
+					$(this).html(
+						text.join(' ')
+					);
+				});
+				
+			});
+		}
+			
+        }
+        
+
+        /**
+         * After a selection is submitted, checks if its the right answer
+         *
+         * @param {choice} number The li zero-based index of the choice picked
+         */
+        function processQuestion(choice){
+
+            
+
+			if(currentquestion == (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length)){
+				$('#submitbutton').html('GET QUIZ RESULTS').removeClass('btn-success').addClass('btn-info').css({'border-color':'#3a87ad', 'color':'#fff'}).on('click', function(){
+					$(this).text('GET QUIZ RESULTS').on('click');
+					endQuiz();
+				})
+				
+			} else if (currentquestion < (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length)){
+
+				if(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["result"] == "CORRECT"){
+					$('.choice').eq(choice).addClass('btn-success').css({'font-weight':'bold', 'border-color':'#51a351', 'color':'#fff'});
+					$('#explanation').html('<span class="correct">CORRECT!</span> ' + htmlEncode(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reason"]) + ((quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reference"] != "") ? '<p><a href='+quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reference"]+' target="_blank" id="w3s">Click here to learn more.</a></p>' : ''));
+					score++;
+					currentquestion++;
+					
+					$('#submitbutton').html('NEXT QUESTION &raquo;').removeClass('btn-success').addClass('btn-warning').css({'font-weight':'bold', 'border-color':'#faa732', 'color':'#fff'}).on('click', function(){
+						$(this).text('- CHECK ANSWER -').removeClass('btn-warning').addClass('btn-success').css({'font-weight':'bold', 'border-color':'#51a351', 'color':'#fff'}).on('click');
+						nextQuestion();
+					})
+									
+				} else {
+					$('.choice').eq(choice).addClass('btn-danger').css({'font-weight':'bold', 'border-color':'#f93939', 'color':'#fff'});
+					$('#explanation').html('<span class="incorrect">INCORRECT!</span> ' + htmlEncode(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reason"]) + ((quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reference"] != "") ? '<p><a href='+quiz[0]["scenario"][currentscenario]["question"][currentquestion]["answer"][parseInt(choice)+1]["reference"]+' target="_blank" id="w3s">Click here to learn more.</a></p>' : ''));
+					
+					$('#submitbutton').html('TRY AGAIN &raquo;').removeClass('btn-success').addClass('btn-warning').css({'font-weight':'bold', 'border-color':'#faa732', 'color':'#fff'}).on('click', function(){
+						$(this).text('- CHECK ANSWER -').removeClass('btn-warning').addClass('btn-success').css({'font-weight':'bold', 'border-color':'#51a351', 'color':'#fff'}).on('click');
+						nextQuestion();
+					})                
+				}
+				
+				
+			} else {
+				//	$('#submitbutton').html('NEXT QUESTION &raquo;').on('click', function(){
+				//		$(this).text('- CHECK ANSWER -').css({'color':'inherit'}).on('click');
+				//	})
+			}
+
+			
+		}
+
+        /**
+         * Sets up the event listeners for each button.
+         */
+		function setupButtons(){
+			$('.choice').on('click', function(){
+				picked = $(this).attr('data-index');
+				$('.choice').removeAttr('style').off('mouseout mouseover');
+				$(this).css({'font-weight':'bold', 'border-color':'#51a351', 'color':'#51a351'});
+				if(submt){
+					submt=false;
+					$('#submitbutton').css({'color':'#fff','cursor':'pointer'}).on('click', function(){
+						$('.choice').off('click');
+						$(this).off('click');
+						processQuestion(picked);
+					});
+				}
+			})
+		}
+        
+        /**
+         * Quiz ends, display a message.
+         */
+		function endQuiz(){
+			$('#explanation').empty();
+			$('#question').empty();
+			$('#choice-block').empty();
+			$('#submitbutton').remove();
+			$('img').remove();
+			$('.rsform-block-submit').addClass('show');
+			$('#question').text("You got " + score + " out of " + (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length-1) + " correct.");
+			$(document.createElement('h4')).addClass('score').text(Math.round(score/(Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length-1) * 100) + '%').insertAfter('#question');			
+		}
+
+        /**
+         * Runs the first time and creates all of the elements for the quiz
+         */
+		function init(){
+			//add title
+			if(typeof quiztitle !== "undefined" && $.type(quiztitle) === "string"){
+				$(document.createElement('h2')).text(quiztitle).appendTo('#frame');
+			} else {
+				$(document.createElement('h2')).text("Quiz").appendTo('#frame');
+			}
+			
+			//add pager and questions
+			if(typeof quiz !== "undefined" && $.type(quiz) === "array"){
+				//add pager
+				$(document.createElement('p')).addClass('pager').attr('id','pager').text('Question 1 of ' + (Object.keys(quiz[0]["scenario"][currentscenario]["question"]).length-1)).appendTo('#frame');
+				//add first question
+				$(document.createElement('h3')).addClass('question').attr('id', 'question').text(quiz[0]["scenario"][currentscenario]["question"][currentquestion]["text"]).appendTo('#frame');
+				//add image if present
+				if(quiz[0]["scenario"][currentscenario]["question"][currentquestion].hasOwnProperty('image') && quiz[0]["scenario"][currentscenario]["question"][currentquestion]['image'] != "" && toggle_image){
+					$(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]["scenario"][currentscenario]["question"][currentquestion]['image']).attr('alt', htmlEncode(quiz[0]['question'])).appendTo('#frame');
+				}
+				
+				$(document.createElement('p')).addClass('explanation').attr('id','explanation').html('').appendTo('#frame');
+				
+				//questions holder
+				$(document.createElement('ul')).attr('id', 'choice-block').appendTo('#frame');
+				
+				//add choices
+				addChoices(quiz[0]["scenario"][currentscenario]["question"][1]["answer"]);
+				
+				//add submit button
+				$(document.createElement('div')).addClass('btn-success choice-box').attr('id', 'submitbutton').text('- CHECK ANSWER -').css({'font-weight':'bold', 'color':'#fff','padding':'30px 0', 'border-radius':'10px'}).appendTo('#frame');
+				
+				setupButtons();
+			}
+		}
+	
+		init();
+	
+	});
+		
+	jQuery(document).ready(function($){			
+		$("#question").html(function(){
+		var text= $(this).text().trim().split(" ");
+		var first = text.shift();
+			return (text.length > 0 ? "<span class='number'>"+ first +"</span> " : first) + text.join(" ");
+		});
+		
+		$('p.pager').each(function(){
+			var text = $(this).text().split(' ');
+			if(text.length < 2)
+				return;
+			
+			text[1] = '<span class="qnumber">'+text[1]+'</span>';
+			$(this).html(
+				text.join(' ')
+			);
+		});		
+	});	
+
+		function copyText() {
+			var output = document.getElementById("frame").innerHTML;
+			document.getElementById("placecontent").value = output;
+		}
+	    
+    </script>
+    <style type="text/css" media="all">
+		input 													{ height:30px !important; }
+		input[type=checkbox]									{ height:30px !important; margin-top:-3px !important; margin-right:5px !important; box-shadow:none; background-color:#ffffff; position:relative !important; }
+		textarea												{ width: 90%; margin: 0 auto; display: block; }
+		input[type=radio]										{ height:30px !important; margin-top:-3px !important; margin-right:5px !important; box-shadow:none; background-color:#ffffff; position:relative !important; }
+		.form-group input, .form-group select 					{ height:30px; padding: 0px 12px; }
+		.form-horizontal .form-group							{ margin:10px; }
+		.formContainer .formControlLabel 						{ width:auto !important; min-width:150px; margin:0; padding:0; }
+		.formControls											{ width:100%; padding:0; margin: 10px 0 20px auto; }
+		.radio 													{ padding-top:0 !important; padding-left:8px !important; }
+		.radio-inline											{ margin-right:10px; padding-top:0 !important; display:inline; }
+		.bold													{ font-weight:bold; }
+		.italic 												{ font-style:italic; }
+		.clear					 								{ width:100%; margin:0 !important; }
+		.rsform-block-submit 									{ display:none; }
+		.show 													{ display: block !important; }
+/*		.rsform-block-placecontent 								{ display:none; } */
+		#submit													{ margin:0 auto; display:block; }
+
+		/* QUIZ STYLES */
+		ol,ul 													{ list-style:none; }
+		strong 													{ font-weight:700; }
+		#frame 													{ width:auto; max-width: 800px; background:transparent; margin:3px auto; padding:10px; color:#333 !important; }
+		div#frame h2 											{ width:auto; border-bottom:1px solid #bdbdbd; padding:0 0 5px 0; font-size:30px; }
+		h3.question 											{ font-weight:normal; margin:20px 0; padding:0; font-style:italic; display:block; }
+		p.pager 												{ margin:5px 0 5px; color:#999; text-align:right; }
+		.qnumber 												{ font-size:25px; font-weight:bold; font-style:italic; vertical-align:bottom; }
+		.number 												{ font-size:25px; font-weight:normal; font-style:italic; vertical-align:inherit; padding-right:10px; }
+		.score 													{ width:100%; display:inline-block; margin:30px 0; font-size:100px; text-align:center; }
+		img.question-image 										{ width:100%; height:auto; display:block; max-width:500px; margin:10px auto; border:1px solid #ccc; }
+		#choice-block 											{ display:block; list-style:none; margin:0; padding:0; cursor: pointer; }
+	/*	#submitbutton 											{ cursor:pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; } */
+		#tryagainbutton 										{ width: 50%; float: left; }
+		#nextbutton 											{ width: 50%; float: right; }		
+	/*	#submitbutton:hover 									{ background:#7b8da6; } */
+		#explanation 											{ width:auto; min-height:100px; margin:0 auto; padding:20px 0; text-align:center; }
+		#explanation span 										{ font-weight:bold; padding-right:8px; }
+		.choice-box 											{ width:100%;  display:block;  text-align:center;  margin:5px auto !important; padding:10px 0 !important; border:1px solid #bdbdbd; }
+		.correct 												{ color:#51a351; font-size: 20px; display: block; margin-bottom: 5px; border-bottom: 1px #51a351 solid; padding-bottom: 5px; }
+		.incorrect 												{ color:#f93939; font-size: 20px; display: block; margin-bottom: 5px; border-bottom: 1px #f93939 solid; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+<div class="form-group rsform-block rsform-block-framecontent">
+    <div id="frame" role="content"></div>
+</div>
+
+<div class="form-group rsform-block rsform-block-placecontent">
+	<label class="col-sm-3 control-label formControlLabel" data-toggle="tooltip" title="" for="placecontent"></label>
+</div>	
+	
+</body>
+</html>
